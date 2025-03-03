@@ -30,7 +30,7 @@ func addExpenseCommand() *cobra.Command {
 	}
 
 	addExpenseCommand.Flags().Float64P("amount", "a", 0.0, "Expense amount (required)")
-	addExpenseCommand.Flags().String("description", "", "Expense description (required)")
+	addExpenseCommand.Flags().StringP("description", "d", "", "Expense description (required)")
 	addExpenseCommand.MarkFlagRequired("amount")
 	addExpenseCommand.MarkFlagRequired("description")
 
