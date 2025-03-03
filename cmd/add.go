@@ -25,7 +25,7 @@ func addExpenseCommand() *cobra.Command {
 				os.Exit(1)
 			}
 
-			handler.WriteCsv("data.csv", description, amount)
+			handler.WriteCsv(description, amount)
 		},
 	}
 

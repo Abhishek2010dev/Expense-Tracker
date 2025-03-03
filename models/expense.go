@@ -1,8 +1,10 @@
-package main
+package models
+
+import "time"
 
 type Expense struct {
 	ID          uint
-	Date        string
+	Date        time.Time
 	Description string
 	Amount      float64
 }

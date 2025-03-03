@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-func WriteCsv(filename string, description string, amount float64) {
-	file := utils.GetFileToWrite(filename)
+func WriteCsv(description string, amount float64) {
+	file := utils.GetFileToWrite("data.csv")
 	defer file.Close()
 
 	writer := csv.NewWriter(file)
