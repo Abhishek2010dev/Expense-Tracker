@@ -6,5 +6,6 @@ func Init() {
 	var rootCmd = &cobra.Command{}
 	rootCmd.AddCommand(AddCommand())
 	rootCmd.AddCommand(ListCommand())
+	rootCmd.AddCommand(SummaryCommand())
 	rootCmd.Execute()
 }
