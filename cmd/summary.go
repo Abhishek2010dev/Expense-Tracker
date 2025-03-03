@@ -9,7 +9,7 @@ import (
 )
 
 func SummaryCommand() *cobra.Command {
-	return &cobra.Command{
+	command := &cobra.Command{
 		Use:   "summary",
 		Short: "Show a summary of expenses",
 		Run: func(cmd *cobra.Command, args []string) {
@@ -18,6 +18,29 @@ func SummaryCommand() *cobra.Command {
 				fmt.Println("Error reading expenses:", err)
 				os.Exit(1)
 			}
+
+			month, err := cmd.Flags().GetInt16("month")
+			if err != nil {
+				fmt.Println("Error retrieving month flag:", err)
+				os.Exit(1)
+			}
+
+			// Filter expenses by month
+			if month != 0 {
+				if month < 0 || month > 12 {
+					fmt.Println("Invalid month")
+				}
+				summary := 0.0
+				for _, record := range record {
+					if int16(record.Date.Month()) == month {
+						summary += record.Amount
+					}
+				}
+				fmt.Printf("Total expenses: $%.2f\n", summary)
+
+				return
+			}
+
 			summary := 0.0
 			for _, record := range record {
 				summary += record.Amount
@@ -25,4 +48,8 @@ func SummaryCommand() *cobra.Command {
 			fmt.Printf("Total expenses: $%.2f\n", summary)
 		},
 	}
+
+	command.Flags().Int16P("month", "m", 0, "Filter expenses by date")
+
+	return command
 }
