@@ -4,5 +4,5 @@ type Expense struct {
 	ID          uint
 	Date        string
 	Description string
-	Amount      uint
+	Amount      float64
 }

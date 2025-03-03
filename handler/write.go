@@ -3,13 +3,14 @@ package handler
 import (
 	"Abhishek2010DevSingh/expenseTracker/utils"
 	"encoding/csv"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
 	"time"
 )
 
-func WriteCsv(filename string, description string, amount uint) {
+func WriteCsv(filename string, description string, amount float64) {
 	file := utils.GetFileToWrite(filename)
 	defer file.Close()
 
@@ -36,4 +37,6 @@ func WriteCsv(filename string, description string, amount uint) {
 	}
 
 	_ = writer.Write(record)
+
+	fmt.Printf("Expense added successfully (ID: %v)", nextID)
 }
