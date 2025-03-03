@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func addExpenseCommand() *cobra.Command {
+func AddCommand() *cobra.Command {
 	addExpenseCommand := &cobra.Command{
 		Use:   "add",
 		Short: "Add a new expense",
