@@ -7,6 +7,7 @@ import (
 )
 
 func GetNextID(file *os.File) int {
+	_, _ = file.Seek(0, os.SEEK_SET)
 	reader := csv.NewReader(file)
 	records, err := reader.ReadAll()
 	if err != nil || len(records) < 1 {
@@ -17,9 +18,9 @@ func GetNextID(file *os.File) int {
 	for i := 1; i < len(records); i++ {
 		id, err := strconv.Atoi(records[i][0])
 		if err == nil && id > maxID {
-			maxID = (id)
+			maxID = id
 		}
 	}
 
-	return maxID
+	return maxID + 1
 }
