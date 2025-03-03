@@ -1,10 +1,8 @@
 package main
 
-import "time"
-
 type Expense struct {
 	ID          uint
-	Date        time.Time
+	Date        string
 	Description string
 	Amount      uint
 }
