@@ -2,18 +2,11 @@ package main
 
 import (
 	"encoding/csv"
-	"log"
 	"os"
 	"strconv"
 )
 
-func GetNextID(filename string) uint {
-	file, err := os.Open(filename)
-	if err != nil {
-		log.Fatal("Can read csv file with name:", filename)
-	}
-	defer file.Close()
-
+func GetNextID(file *os.File) uint {
 	reader := csv.NewReader(file)
 	records, err := reader.ReadAll()
 	if err != nil || len(records) < 1 {
