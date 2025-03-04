@@ -29,6 +29,7 @@ func SummaryCommand() *cobra.Command {
 			if month != 0 {
 				if month < 0 || month > 12 {
 					fmt.Println("Invalid month")
+					os.Exit(1)
 				}
 				summary := 0.0
 				for _, record := range record {
