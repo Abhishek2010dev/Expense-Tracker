@@ -7,5 +7,6 @@ func Init() {
 	rootCmd.AddCommand(AddCommand())
 	rootCmd.AddCommand(ListCommand())
 	rootCmd.AddCommand(SummaryCommand())
+	rootCmd.AddCommand(DeleteCommand())
 	rootCmd.Execute()
 }
