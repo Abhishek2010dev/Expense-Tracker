@@ -27,27 +27,27 @@ func SummaryCommand() *cobra.Command {
 			}
 
 			// Filter expenses by month
-			if month != 0 {
-				if month < 0 || month > 12 {
-					fmt.Println("Invalid month")
-					os.Exit(1)
-				}
+			if month == 0 {
 				summary := 0.0
 				for _, record := range record {
-					if int16(record.Date.Month()) == month {
-						summary += record.Amount
-					}
+					summary += record.Amount
 				}
-				fmt.Printf("Total expenses in %s: $%.2f\n", time.Month(month), summary)
-
+				fmt.Printf("Total expenses: $%.2f\n", summary)
 				return
 			}
 
+			if month < 0 || month > 12 {
+				fmt.Println("Invalid month")
+				os.Exit(1)
+			}
 			summary := 0.0
 			for _, record := range record {
-				summary += record.Amount
+				if int16(record.Date.Month()) == month {
+					summary += record.Amount
+				}
 			}
-			fmt.Printf("Total expenses: $%.2f\n", summary)
+			fmt.Printf("Total expenses in %s: $%.2f\n", time.Month(month), summary)
+
 		},
 	}
 
