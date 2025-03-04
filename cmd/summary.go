@@ -4,6 +4,7 @@ import (
 	"Abhishek2010DevSingh/expenseTracker/utils"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -37,7 +38,7 @@ func SummaryCommand() *cobra.Command {
 						summary += record.Amount
 					}
 				}
-				fmt.Printf("Total expenses: $%.2f\n", summary)
+				fmt.Printf("Total expenses in %s: $%.2f\n", time.Month(month), summary)
 
 				return
 			}
